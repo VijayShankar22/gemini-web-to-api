@@ -1,0 +1,20 @@
+name = "gemini-proxy"
+main = "main.js"
+compatibility_date = "2024-11-01"
+
+[durable_objects]
+bindings = [
+  { name = "GEMINI_SESSIONS", class_name = "GeminiSessionDO" }
+]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["GeminiSessionDO"]
+
+[vars]
+# How many messages per session before rotating (new conversation)
+GEMINI_SESSION_MAX_MSGS = "20"
+# Session TTL in milliseconds (default: 3 hours)
+GEMINI_SESSION_TTL_MS = "10800000"
+# Language hint (optional, default en-US)
+GEMINI_HL = "en-US"
